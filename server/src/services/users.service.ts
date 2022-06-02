@@ -365,6 +365,9 @@ export class UsersService {
       case 'Folder':
         return await this.canUserPerformActionOnFolder(user, action);
 
+      case 'OrgEnvironmentVariable':
+        return await this.canUserPerformActionOnEnvironmentVariable(user, action);
+
       default:
         return false;
     }
@@ -403,6 +406,36 @@ export class UsersService {
     switch (action) {
       case 'create':
         permissionGrant = this.canAnyGroupPerformAction('folderCreate', await this.groupPermissions(user));
+        break;
+      default:
+        permissionGrant = false;
+        break;
+    }
+
+    return permissionGrant;
+  }
+
+  async canUserPerformActionOnEnvironmentVariable(user: User, action: string): Promise<boolean> {
+    let permissionGrant: boolean;
+
+    switch (action) {
+      case 'create':
+        permissionGrant = this.canAnyGroupPerformAction(
+          'orgEnvironmentVariableCreate',
+          await this.groupPermissions(user)
+        );
+        break;
+      case 'update':
+        permissionGrant = this.canAnyGroupPerformAction(
+          'orgEnvironmentVariableUpdate',
+          await this.groupPermissions(user)
+        );
+        break;
+      case 'delete':
+        permissionGrant = this.canAnyGroupPerformAction(
+          'orgEnvironmentVariableDelete',
+          await this.groupPermissions(user)
+        );
         break;
       default:
         permissionGrant = false;
