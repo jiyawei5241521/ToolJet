@@ -11,8 +11,10 @@ import { OrganizationUsersController } from '@controllers/organization_users.con
 import { UsersService } from 'src/services/users.service';
 import { CaslModule } from '../casl/casl.module';
 import { EmailService } from '@services/email.service';
+import { FilesService } from '@services/files.service';
 import { GroupPermission } from 'src/entities/group_permission.entity';
 import { App } from 'src/entities/app.entity';
+import { File } from 'src/entities/file.entity';
 import { SSOConfigs } from 'src/entities/sso_config.entity';
 import { OrgEnvironmentVariable } from 'src/entities/org_envirnoment_variable.entity';
 import { AuthService } from '@services/auth.service';
@@ -30,6 +32,7 @@ import { OrgEnvironmentVariablesService } from '@services/org_environment_variab
       Organization,
       OrganizationUser,
       User,
+      File,
       GroupPermission,
       App,
       SSOConfigs,
@@ -55,6 +58,7 @@ import { OrgEnvironmentVariablesService } from '@services/org_environment_variab
     OrganizationUsersService,
     UsersService,
     EmailService,
+    FilesService,
     AuthService,
     GroupPermissionsService,
     EncryptionService,
