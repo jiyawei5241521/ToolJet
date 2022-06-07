@@ -6,7 +6,7 @@ import { DarkModeToggle } from './DarkModeToggle';
 import LogoIcon from '../Editor/Icons/logo.svg';
 import { Organization } from './Organization';
 
-export const Header = function Header({ switchDarkMode, darkMode }) {
+export const Header = function Header({ switchDarkMode, darkMode, currentVersion }) {
   // eslint-disable-next-line no-unused-vars
   const [pathName, setPathName] = useState(document.location.pathname);
 
@@ -73,8 +73,8 @@ export const Header = function Header({ switchDarkMode, darkMode }) {
               <Link data-testid="logoutBtn" to="#" onClick={logout} className="dropdown-item" data-cy="logout-link">
                 Logout
               </Link>
-              <Link to="#" className="dropdown-item" style={{ pointerEvents: 'none' }}>
-                v
+              <Link to="#" className="dropdown-item" style={{ pointerEvents: 'none', color: 'grey' }}>
+                v{currentVersion}
               </Link>
             </div>
           </div>
